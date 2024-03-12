@@ -1,21 +1,15 @@
 <?php 
-$business = [
-  'name' => 'Laracasts',
-  'cost' => 15,
-  'categories' => ['Testing', 'PHP', 'Javascript']
-  ];
 
-function register($user) {
-  //
-}
+require "Database.php";
+require "functions.php";
+//require "router.php";
+$config = require("config.php");
 
-function dd($value) {
-  echo "<pre>";
-  var_dump($value);
-  echo "</pre>";
-  die();
-}
+$db = new Database($config['database'], $config['account']['username'], $config['account']['password']);
 
-$heading = "Home";
+$id = $_GET['id'];
+$query = "SELECT * FROM posts WHERE id={$id}";
 
-require 'views/index.view.php';
+$post = $db->query($query)->fetchAll();
+
+dd($post);
