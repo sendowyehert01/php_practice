@@ -1,10 +1,11 @@
 <?php 
 class Database {
+
   public $connection;
 
   public $statement;
 
-  public function __construct($config, $username, $password) {
+  public function __construct(array $config, string $username, string $password) {
     $dsn = "mysql:" . http_build_query($config, '', ';');
 
     $this->connection = new PDO($dsn, $username, $password, [
@@ -12,7 +13,7 @@ class Database {
       ]);
   }
 
-  public function query($query, $params = []) {
+  public function query(string $query, $params = []) {
     $this->statement = $this->connection->prepare($query);
     $this->statement->execute($params);
     return $this;
@@ -22,11 +23,12 @@ class Database {
     return $this->statement->fetch();
   }
 
+
   public function get() {
     return $this->statement->fetchAll();
   }
 
-  public function findOrFail() {
+  public function findOrFail() : string {
     $result = $this->statement->fetch();
     if (!$result) {
       abort();
