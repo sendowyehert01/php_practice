@@ -1,4 +1,9 @@
 <?php 
+
+namespace Core;
+
+use PDO;
+
 class Database {
 
   public $connection;
@@ -13,7 +18,7 @@ class Database {
       ]);
   }
 
-  public function query(string $query, $params = []) {
+  public function query($query, $params = []) {
     $this->statement = $this->connection->prepare($query);
     $this->statement->execute($params);
     return $this;
@@ -28,7 +33,7 @@ class Database {
     return $this->statement->fetchAll();
   }
 
-  public function findOrFail() : string {
+  public function findOrFail() {
     $result = $this->statement->fetch();
     if (!$result) {
       abort();

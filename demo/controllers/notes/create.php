@@ -3,7 +3,7 @@
 require base_path('Validator.php');
 
 $config = require(base_path("config.php"));
-$db = new Database($config['database'], $config['account']['username'], $config['account']['password']);
+$db = new Core\Database($config['database'], $config['account']['username'], $config['account']['password']);
 
 $errors = [];
 
