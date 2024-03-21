@@ -7,8 +7,12 @@
       <p class="mb-6">
         <a href="/notes" class="text-blue-500 underline">Go Back</a>
       </p>
-          <?php /** @var array<string, string> $note */ ?>
           <p><?= $note['body'] ?></p>
+
+          <form action="" method="POST" class="mt-6">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="text-sm text-red-500">Delete</button>
+          </form>
     </div>
   </main>
   
