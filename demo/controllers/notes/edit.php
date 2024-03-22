@@ -12,8 +12,7 @@ $note = $db->query("SELECT * FROM notes WHERE id = :id", ['id' => $_GET['id']])-
 
 authorize($note['user_id'] === $currentUser);
 
-view('notes/show.view.php', [
-  'heading' => 'Note',
-  'note' => $note,
+view('notes/edit.view.php', [
+  'heading' => 'Edit Notes',
+  'notes' => $note
 ]);
-

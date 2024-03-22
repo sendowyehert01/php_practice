@@ -9,6 +9,14 @@ function dd($value) {
   die();
 }
 
+
+function abort($value = 404) 
+{
+http_response_code($value);
+require base_path("views/{$value}.php");
+die();
+}
+
 function isUrl($value) {
   return $_SERVER['REQUEST_URI'] === $value;
 }

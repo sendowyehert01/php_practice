@@ -12,8 +12,8 @@ $note = $db->query("SELECT * FROM notes WHERE id = :id", ['id' => $_GET['id']])-
 
 authorize($note['user_id'] === $currentUser);
 
-view('notes/show.view.php', [
-  'heading' => 'Note',
-  'note' => $note,
-]);
+$db->query("DELETE from notes where id = :id", [ 'id' =>  $_GET['id'] ]);
+
+header('location: /notes');
+exit();
 
