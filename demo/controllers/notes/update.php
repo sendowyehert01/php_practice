@@ -2,7 +2,7 @@
 
 use Core\App;
 use Core\Database;
-use Core\Response;
+use Core\Validator;
 
 $db = App::resolve('Core\Database');
 
@@ -17,3 +17,20 @@ $errors = [];
   if (! Validator::string($_POST['body'], 1 , 50)) {
     $errors['body'] = "A body of no more than 50 characters is required.";
   }
+
+
+  if (count($errors)) {
+    return view('notes/edit.view.php', [
+      'heading' => 'Edit Note',
+      'note' => $note,
+      'errors' => $errors
+    ]);
+  }
+
+  $db->query('UPDATE notes SET body = :body WHERE id = :id', [
+      'id' => $_POST['id'],
+      'body' => $_POST['body'],
+    ]);
+
+    header('location: /notes');
+    die();

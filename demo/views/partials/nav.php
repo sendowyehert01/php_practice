@@ -28,6 +28,7 @@
             <!-- Profile dropdown -->
             <div class="relative ml-3">
               <div>
+                <?php if ($_SESSION['user'] ?? false) : ?>
                 <button type="button" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                   <span class="absolute -inset-1.5"></span>
                   <span class="sr-only">Open user menu</span>
@@ -51,6 +52,9 @@
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
               </div>
+              <?php else : ?>
+                  <a href="/register" class="text-white">Register</a>
+              <?php endif; ?>
             </div>
           </div>
         </div>
