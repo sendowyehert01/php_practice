@@ -9,9 +9,9 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/" class="<?= isUrl('/') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-              <a href="/about" class="<?= isUrl('/about.php') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
-              <a href="/notes" class="<?= isUrl('/notes.php') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
-              <a href="/contact" class="<?= isUrl('/contact.php') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+              <a href="/about" class="<?= isUrl('/about') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+              <a href="/notes" class="<?= isUrl('/notes') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+              <a href="/contact" class="<?= isUrl('/contact') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
             </div>
           </div>
         </div>
@@ -50,10 +50,16 @@
                 <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                <div class="block px-4 py-2 text-sm text-gray-700">
+                  <form action="/sessions" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button>Log Out</button>
+                  </form>
+                </div>
               </div>
               <?php else : ?>
-                  <a href="/register" class="text-white">Register</a>
+                  <a href="/register" class="<?= isUrl('/register') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                  <a href="/login" class="<?= isUrl('/login') ? "bg-gray-900 text-white" : "text-gray-300"; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</a>
               <?php endif; ?>
             </div>
           </div>
